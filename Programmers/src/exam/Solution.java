@@ -18,34 +18,52 @@ participant									completion							return
 
 */
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Solution {
-    public String solution(String[] participant, String[] completion) {
-    	
-    	Arrays.sort(participant);
-    	Arrays.sort(completion);
-    	String answer =participant[participant.length-1];
-    	
-    	for (int i=0;i<completion.length;i++) {
-			if(!participant[i].equals(completion[i])) {
-				
-				answer=participant[i];
+	public String solution(String[] participant, String[] completion) {
+
+		
+		//hashMap 이용
+		Map<String, Integer> hm = new HashMap<>();
+		String answer = "";
+		for (String str : participant) {
+			hm.put(str, hm.getOrDefault(str, 0) + 1);
+		}
+		for (String str : completion) {
+			hm.put(str, hm.get(str) - 1);
+		}
+
+		for (String key : hm.keySet()) {
+			if (hm.get(key) != 0) {
+				answer = key;
+			}
+		}
+	
+		/* 정렬이용
+		Arrays.sort(participant);
+		Arrays.sort(completion);
+		answer = participant[participant.length - 1];
+
+		for (int i = 0; i < completion.length; i++) {
+			if (!participant[i].equals(completion[i])) {
+
+				answer = participant[i];
 				break;
 			}
 		}
-        
-        return answer;
-    }
-    
-    public static void main(String[] args) {
-    	
-		Solution s=new Solution();
-		String[] parti= {"leo", "kiki", "eden"};
-		String[] completion= {"kiki", "eden"};
-		
+		 */
+		return answer;
+	}
+
+	public static void main(String[] args) {
+
+		Solution s = new Solution();
+		String[] parti = { "leo", "kiki", "eden" };
+		String[] completion = { "kiki", "eden" };
+
 		System.out.println(s.solution(parti, completion));
-		
-		
 
 	}
 }
