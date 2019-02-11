@@ -31,9 +31,9 @@ public class PhoneList {
 
 		for (int i = 0; i < phone_book.length - 1; i++) {
 			hm.put(i, phone_book[i]);
-
+			String str=hm.get(i);
 			for (int j = i + 1; j < phone_book.length; j++) {
-				if (phone_book[j].startsWith(hm.get(i))) {
+				if (phone_book[j].startsWith(str)) {
 					return false;
 				}
 			}
