@@ -1,8 +1,6 @@
 package exam;
 
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
 
 /*문제 설명
 전화번호부에 적힌 전화번호 중, 한 번호가 다른 번호의 접두어인 경우가 있는지 확인하려 합니다.
@@ -26,12 +24,11 @@ phone_book	return
 public class PhoneList {
 	public boolean solution(String[] phone_book) {
 
-		Map<Integer, String> hm = new HashMap<>();
 		Arrays.sort(phone_book);
-
+		String str = "";
 		for (int i = 0; i < phone_book.length - 1; i++) {
-			hm.put(i, phone_book[i]);
-			String str=hm.get(i);
+
+			str = phone_book[i];
 			for (int j = i + 1; j < phone_book.length; j++) {
 				if (phone_book[j].startsWith(str)) {
 					return false;
