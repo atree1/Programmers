@@ -5,11 +5,11 @@ public class Main {
 
 	public static void main(String[] args) {
 	
-		Solution s=new Solution();
-		String[] parti= {"leo", "kiki", "eden"};
-		String[] completion= {"kiki", "eden"};
+		BestAlbum b=new BestAlbum(); 
+		String[] parti= {"classic", "pop", "classic", "classic", "pop"};
+		int[] completion= {500,600,150,800,2500};
 		
-		System.out.println(s.solution(parti, completion));
+		System.out.println(b.solution(parti, completion));
 		
 		
 
